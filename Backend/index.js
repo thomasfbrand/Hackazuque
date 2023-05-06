@@ -11,34 +11,29 @@ const provider = new ethers.providers.InfuraProvider('mainnet', {
 });
 
 // Criação de uma instância do contrato
-const contractAddress = 'tyyrtiuwht84'; // Endereço do contrato na blockchain
-const abi = []; // Abi do contrato
+const contractAddress = '0x123456789...'; // Endereço do contrato na blockchain
+const abi = []; // ABI do contrato
 const contract = new ethers.Contract(contractAddress, abi, provider);
 
-app.get('/balance/:address', async (req, res) => {
-  const { address } = req.params;
+app.get('/payments/:companyAddress', async (req, res) => {
+  const { companyAddress } = req.params;
 
   try {
-    const balance = await provider.getBalance(address);
-    res.json({ balance: balance.toString() });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao obter saldo' });
-  }
-});
+    const paymentCount = await contract.paymentCount(companyAddress); // Obter o número total de pagamentos
+    const payments = [];
 
-app.get('/contract/name', async (req, res) => {
-  try {
-    const name = await contract.name();
-    res.json({ name });
+    for (let i = 0; i < paymentCount; i++) {
+      const payment = await contract.payments(companyAddress, i); // Obter os detalhes de cada pagamento
+      payments.push(payment);
+    }
+
+    res.json({ payments });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao obter o nome do contrato' });
+    res.status(500).json({ error: 'Erro ao obter os pagamentos' });
   }
 });
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
-
-// DÚVIDAS: perguntar se realmente é mainnet a rede ethereum que será usada
