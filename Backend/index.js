@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 // Configuração da conexão com a rede Ethereum usando Infura
-const provider = new ethers.providers.InfuraProvider('mainnet', {
+const provider = new ethers.providers.InfuraProvider('mumbai', {
   projectId: process.env.INFURA_PROJECT_ID,
 });
 
