@@ -21,13 +21,13 @@ export default function AppTable() {
         <table>
           <thead>
             <tr>
-              <th>User ID</th>
-              <th>Record ID</th>
-              <th>Title</th>
-              <th>Completed</th>
-              <th>Subject 1</th>
-              <th>Subject 2</th>
-              <th>Subject 3</th>
+              <th>Empresa</th>
+              <th>% Quitação Mensal</th>
+              <th>Valor do Empréstimo</th>
+              <th>% Juros Mensal</th>
+              <th>Saldo Devedor</th>
+              <th>Data Início</th>
+              <th>Data Projetada de Quitação</th>
             </tr>
           </thead>
           <tbody>
