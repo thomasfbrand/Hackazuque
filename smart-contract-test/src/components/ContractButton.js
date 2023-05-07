@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
-//import ContractFactoryABI from './contracts/ContractFactory.sol';
 import EscrowABI from './contracts/EscrowABI.js';
 import ContractFactoryABI from './contracts/ContractFactoryABI.js';
 import { FormContainer } from '../styles/components/ContractButtonStyled.js';
@@ -20,7 +19,7 @@ const ContractButton = () => {
       const signer = provider.getSigner();
 
       // Create an instance of the contract factory
-      const contractFactoryAddress = '0xYourContractFactoryAddress';
+      const contractFactoryAddress = '0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47';
       const contractFactory = new ethers.Contract(contractFactoryAddress, ContractFactoryABI, signer);
 
       // Create an instance of the escrow contract
