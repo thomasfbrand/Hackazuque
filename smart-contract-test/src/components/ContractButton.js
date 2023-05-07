@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
-//import ContractFactoryABI from './contracts/ContractFactory.sol';
-import EscrowABI from './contracts/EscrowABI.js';
-import ContractFactoryABI from './contracts/ContractFactoryABI.js';
+import ContractFactoryABI from './contracts/ContractFactoryABI';
+import EscrowABI from './contracts/EscrowABI';
 
 const ContractButton = () => {
+  const [tokenAddress, setTokenAddress] = useState('');
   const [buyer, setBuyer] = useState('');
   const [seller, setSeller] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -13,21 +13,18 @@ const ContractButton = () => {
   const handleButtonClick = async () => {
     try {
       // Create an instance of the Ethereum provider
-      const provider = new ethers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com");
+      const provider = new ethers.JsonRpcProvider("https://mumbai.polygonscan.com/");
 
       // Get the signer for the current Ethereum account
       const signer = provider.getSigner();
 
       // Create an instance of the contract factory
-      const contractFactoryAddress = '0xYourContractFactoryAddress';
+      const contractFactoryAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
       const contractFactory = new ethers.Contract(contractFactoryAddress, ContractFactoryABI, signer);
 
       // Create an instance of the escrow contract
-      const escrowAddress = await contractFactory.createTransaction(buyer, seller, quantity, releaseTime);
+      const escrowAddress = await contractFactory.createTransaction(tokenAddress, buyer, seller, quantity, releaseTime);
       const escrowContract = new ethers.Contract(escrowAddress, EscrowABI, signer);
-
-      const deployedContract = await contractFactory.deploy(buyer, seller, quantity, releaseTime);
-      await deployedContract.deployed();
 
       console.log('Escrow contract generated successfully!');
     } catch (error) {
@@ -37,6 +34,12 @@ const ContractButton = () => {
 
   return (
     <div>
+      <input
+        type="text"
+        value={tokenAddress}
+        onChange={(e) => setTokenAddress(e.target.value)}
+        placeholder="Token Address"
+      />
       <input
         type="text"
         value={buyer}
