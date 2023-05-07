@@ -29,7 +29,6 @@ const ContractButton = () => {
       const deployedContract = await contractFactory.deploy(buyer, seller, quantity, releaseTime);
       await deployedContract.deployed();
 
-
       console.log('Escrow contract generated successfully!');
     } catch (error) {
       console.error('An error occurred while generating the escrow contract:', error);
