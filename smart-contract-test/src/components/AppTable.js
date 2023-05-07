@@ -25,12 +25,10 @@ export default function AppTable() {
             <thead>
               <tr>
                 <th><span>Empresa<CaretDown size={16}/></span></th>
-                <th><span>% Quitação Mensal<CaretDown size={16}/></span></th>
-                <th><span>Valor do Empréstimo<CaretDown size={16}/></span></th>
-                <th><span>% Juros Mensal<CaretDown size={16}/></span></th>
-                <th><span>Saldo Devedor<CaretDown size={16}/></span></th>
-                <th><span>Data Início<CaretDown size={16}/></span></th>
-                <th><span>Data para Quitação<CaretDown size={16}/></span></th>
+                <th><span>Valor do empréstimo %<CaretDown size={16}/></span></th>
+                <th><span>Juros Mensal %<CaretDown size={16}/></span></th>
+                <th><span>Faturamento %<CaretDown size={16}/></span></th>
+
               </tr>
             </thead>
             <tbody>
@@ -40,9 +38,7 @@ export default function AppTable() {
                   <td>{result.id}</td>
                   <td>{result.title}</td>
                   <td>{result.completed ? "Yes" : "No"}</td>
-                  <td>Subject 1</td>
-                  <td>Subject 2</td>
-                  <td>Subject 3</td>
+
                 </tr>
               ))}
             </tbody>
