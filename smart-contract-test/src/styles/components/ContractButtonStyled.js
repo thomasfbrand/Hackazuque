@@ -21,6 +21,7 @@ export const FormContainer = styled('div', {
     color: '000',
     width: '25%',
     padding: '0.5rem',
+    whiteSpace: "nowrap"
   },
 
   button: {
