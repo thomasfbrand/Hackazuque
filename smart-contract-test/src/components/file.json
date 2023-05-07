@@ -1,0 +1,41 @@
+[
+    {
+        "empresa": "Acme Corporation",
+        "valor_emprestimo": "$50.000",
+        "juros_mensal": 2.5,
+        "porcentagem_faturamento": 15
+    },
+
+    {
+        "empresa": "XYZ Industries",
+        "valor_emprestimo": "$75.000",
+        "juros_mensal": 1.8,
+        "porcentagem_faturamento": 12
+    },
+    {
+        "empresa": "ABC Holdings",
+        "valor_emprestimo": "$100.000",
+        "juros_mensal": 2.2,
+        "porcentagem_faturamento": 8
+      },
+      {
+        "empresa": "Smith & Co.",
+        "valor_emprestimo": "$25.000",
+        "juros_mensal": 2.0,
+        "porcentagem_faturamento": 10
+      },
+      {
+        "empresa": "Tech Solutions Ltd.",
+        "valor_emprestimo": "$120.000",
+        "juros_mensal": 1.5,
+        "porcentagem_faturamento": 20
+      },
+      {
+        "empresa": "InovaTech Solutions",
+        "valor_emprestimo": "$75.000",
+        "juros_mensal": 1.25,
+        "porcentagem_faturamento": 20
+      }
+      
+            
+]

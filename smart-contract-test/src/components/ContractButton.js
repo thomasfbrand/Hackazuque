@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import EscrowABI from './contracts/EscrowABI.js';
 import ContractFactoryABI from './contracts/ContractFactoryABI.js';
 import { FormContainer } from '../styles/components/ContractButtonStyled.js';
+import { ContractFactory } from 'ethers';
 
 const ContractButton = () => {
   const [buyer, setBuyer] = useState('');
@@ -42,25 +43,25 @@ const ContractButton = () => {
         type="text"
         value={buyer}
         onChange={(e) => setBuyer(e.target.value)}
-        placeholder="Buyer Address"
+        placeholder="Empresa"
       />
       <input
         type="text"
         value={seller}
         onChange={(e) => setSeller(e.target.value)}
-        placeholder="Seller Address"
+        placeholder="Valor do Empréstimo"
       />
       <input
         type="text"
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
-        placeholder="Quantity"
+        placeholder="Juros Mensal %"
       />
       <input
         type="text"
         value={releaseTime}
         onChange={(e) => setReleaseTime(e.target.value)}
-        placeholder="Release Time"
+        placeholder="% de Faturamento"
       />
       <button onClick={handleButtonClick}>Generate Escrow Contract</button>
     </FormContainer>
