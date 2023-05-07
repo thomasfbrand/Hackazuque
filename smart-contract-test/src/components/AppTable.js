@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Table, TableContainer } from "../styles/components/AppTableStyled";
+import { CaretDown } from 'phosphor-react'
 
 export default function AppTable() {
   const [results, setResults] = useState();
@@ -18,32 +20,34 @@ export default function AppTable() {
   return (
     <>
       {results ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Empresa</th>
-              <th>% Quitação Mensal</th>
-              <th>Valor do Empréstimo</th>
-              <th>% Juros Mensal</th>
-              <th>Saldo Devedor</th>
-              <th>Data Início</th>
-              <th>Data Projetada de Quitação</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((result, index) => (
-              <tr key={index}>
-                <td>{result.userId}</td>
-                <td>{result.id}</td>
-                <td>{result.title}</td>
-                <td>{result.completed ? "Yes" : "No"}</td>
-                <td>Subject 1</td>
-                <td>Subject 2</td>
-                <td>Subject 3</td>
+        <TableContainer>
+          <Table>
+            <thead>
+              <tr>
+                <th><span>Empresa<CaretDown size={16}/></span></th>
+                <th><span>% Quitação Mensal<CaretDown size={16}/></span></th>
+                <th><span>Valor do Empréstimo<CaretDown size={16}/></span></th>
+                <th><span>% Juros Mensal<CaretDown size={16}/></span></th>
+                <th><span>Saldo Devedor<CaretDown size={16}/></span></th>
+                <th><span>Data Início<CaretDown size={16}/></span></th>
+                <th><span>Data Projetada de Quitação<CaretDown size={16}/></span></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {results.map((result, index) => (
+                <tr key={index}>
+                  <td>{result.userId}</td>
+                  <td>{result.id}</td>
+                  <td>{result.title}</td>
+                  <td>{result.completed ? "Yes" : "No"}</td>
+                  <td>Subject 1</td>
+                  <td>Subject 2</td>
+                  <td>Subject 3</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </TableContainer>
       ) : (
         <p>Loading...</p>
       )}
