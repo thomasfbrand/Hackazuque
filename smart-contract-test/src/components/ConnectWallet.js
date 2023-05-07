@@ -1,5 +1,7 @@
 import React from 'react';
 import Web3 from 'web3';
+import { ConnectButtonStyled } from '../styles/components/ConnectWalletStyled';
+import { Wallet } from 'phosphor-react'
 
 export default function WalletButton() {
   function handleConnectWallet() {
@@ -34,7 +36,7 @@ export default function WalletButton() {
 
   return (
     <div>
-        <button id="MetamaskButton" onClick={handleConnectWallet}>Connect to MetaMask</button>
+        <ConnectButtonStyled id="MetamaskButton" onClick={handleConnectWallet}>Connect to MetaMask <Wallet size={24}/></ConnectButtonStyled>
     </div>
   );
 }

@@ -26,8 +26,13 @@ export const FormContainer = styled('div', {
   button: {
     width: '15%',
     padding: '1rem',
-    backgroundColor: '#ccc',
+    backgroundColor: '#e1e1e1',
     borderRadius: '8px',
     border: 'none',
+    cursor: 'pointer',
+  },
+
+  'button:hover': {
+    backgroundColor: '#ccc',
   }
 })
