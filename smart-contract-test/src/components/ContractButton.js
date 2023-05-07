@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
+//import ContractFactoryABI from './contracts/ContractFactory.sol';
+import EscrowABI from './contracts/EscrowABI.js';
+import ContractFactoryABI from './contracts/ContractFactoryABI.js';
 
 const ContractButton = () => {
-  const [input1, setInput1] = useState('');
-  const [input2, setInput2] = useState('');
-  const [input3, setInput3] = useState('');
+  const [buyer, setBuyer] = useState('');
+  const [seller, setSeller] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [releaseTime, setReleaseTime] = useState('');
 
   const handleButtonClick = async () => {
     try {
-      // Crie uma instância do provedor Ethereum
-      const provider = new ethers.JsonRpcProvider('https://mainnet.infura.io/v3/30166d4e470249e29dfeb5c93a86d3df');
+      // Create an instance of the Ethereum provider
+      const provider = new ethers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com");
 
-      // Crie uma instância do contrato
-      const contractAddress = '0xYourContractAddress';
-      const contractABI = ['your-contract-abi'];
-      const contract = new ethers.Contract(contractAddress, contractABI, provider);
+      // Get the signer for the current Ethereum account
+      const signer = provider.getSigner();
 
-      // Execute a função do contrato que cria o smart contract
-      const transaction = await contract.createSmartContract(input1, input2, input3);
+      // Create an instance of the contract factory
+      const contractFactoryAddress = '0xYourContractFactoryAddress';
+      const contractFactory = new ethers.Contract(contractFactoryAddress, ContractFactoryABI, signer);
 
-      // Aguarde a confirmação da transação
-      await transaction.wait();
+      // Create an instance of the escrow contract
+      const escrowAddress = await contractFactory.createTransaction(buyer, seller, quantity, releaseTime);
+      const escrowContract = new ethers.Contract(escrowAddress, EscrowABI, signer);
 
-      console.log('Smart contract gerado com sucesso!');
+      const deployedContract = await contractFactory.deploy(buyer, seller, quantity, releaseTime);
+      await deployedContract.deployed();
+
+      console.log('Escrow contract generated successfully!');
     } catch (error) {
-      console.error('Ocorreu um erro ao gerar o smart contract:', error);
+      console.error('An error occurred while generating the escrow contract:', error);
     }
   };
 
@@ -32,23 +39,29 @@ const ContractButton = () => {
     <div>
       <input
         type="text"
-        value={input1}
-        onChange={(e) => setInput1(e.target.value)}
-        placeholder="Input 1"
+        value={buyer}
+        onChange={(e) => setBuyer(e.target.value)}
+        placeholder="Buyer Address"
       />
       <input
         type="text"
-        value={input2}
-        onChange={(e) => setInput2(e.target.value)}
-        placeholder="Input 2"
+        value={seller}
+        onChange={(e) => setSeller(e.target.value)}
+        placeholder="Seller Address"
       />
       <input
         type="text"
-        value={input3}
-        onChange={(e) => setInput3(e.target.value)}
-        placeholder="Input 3"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+        placeholder="Quantity"
       />
-      <button onClick={handleButtonClick}>Gerar Smart Contract</button>
+      <input
+        type="text"
+        value={releaseTime}
+        onChange={(e) => setReleaseTime(e.target.value)}
+        placeholder="Release Time"
+      />
+      <button onClick={handleButtonClick}>Generate Escrow Contract</button>
     </div>
   );
 };
