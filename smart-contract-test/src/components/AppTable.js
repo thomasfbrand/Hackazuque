@@ -30,7 +30,7 @@ export default function AppTable() {
                 <th><span>% Juros Mensal<CaretDown size={16}/></span></th>
                 <th><span>Saldo Devedor<CaretDown size={16}/></span></th>
                 <th><span>Data Início<CaretDown size={16}/></span></th>
-                <th><span>Data Projetada de Quitação<CaretDown size={16}/></span></th>
+                <th><span>Data para Quitação<CaretDown size={16}/></span></th>
               </tr>
             </thead>
             <tbody>

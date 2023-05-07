@@ -2,15 +2,15 @@ import React from 'react';
 import ContractButton from './components/ContractButton';
 import WalletButton from './components/ConnectWallet';
 import AppTable from './components/AppTable'
+import { Container } from './styles/components/Container';
 
 function App() {
   return (
-    <div>
-      <h1>Gerador de Smart Contract</h1>
+    <Container>
       <ContractButton />
       <WalletButton />
-      <AppTable />;
-    </div>
+      <AppTable />
+    </Container>
   );
 }
 

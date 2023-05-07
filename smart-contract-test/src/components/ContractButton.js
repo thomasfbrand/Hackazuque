@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 //import ContractFactoryABI from './contracts/ContractFactory.sol';
 import EscrowABI from './contracts/EscrowABI.js';
 import ContractFactoryABI from './contracts/ContractFactoryABI.js';
+import { FormContainer } from '../styles/components/ContractButtonStyled.js';
 
 const ContractButton = () => {
   const [buyer, setBuyer] = useState('');
@@ -36,7 +37,8 @@ const ContractButton = () => {
   };
 
   return (
-    <div>
+    <FormContainer>
+      <h1>Gerador de Smart Contract</h1>
       <input
         type="text"
         value={buyer}
@@ -62,7 +64,7 @@ const ContractButton = () => {
         placeholder="Release Time"
       />
       <button onClick={handleButtonClick}>Generate Escrow Contract</button>
-    </div>
+    </FormContainer>
   );
 };
 
