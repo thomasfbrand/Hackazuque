@@ -13,7 +13,7 @@ const ContractButton = () => {
   const handleButtonClick = async () => {
     try {
       // Create an instance of the Ethereum provider
-      const provider = new ethers.JsonRpcProvider('https://mainnet.infura.io/v3/30166d4e470249e29dfeb5c93a86d3df');
+      const provider = new ethers.JsonRpcProvider("https://rpc-mumbai.matic.today");
 
       // Get the signer for the current Ethereum account
       const signer = provider.getSigner();
