@@ -13,7 +13,7 @@ const ContractButton = () => {
   const handleButtonClick = async () => {
     try {
       // Create an instance of the Ethereum provider
-      const provider = new ethers.JsonRpcProvider("https://rpc-mumbai.matic.today");
+      const provider = new ethers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com");
 
       // Get the signer for the current Ethereum account
       const signer = provider.getSigner();
@@ -25,6 +25,10 @@ const ContractButton = () => {
       // Create an instance of the escrow contract
       const escrowAddress = await contractFactory.createTransaction(buyer, seller, quantity, releaseTime);
       const escrowContract = new ethers.Contract(escrowAddress, EscrowABI, signer);
+
+      const deployedContract = await contractFactory.deploy(buyer, seller, quantity, releaseTime);
+      await deployedContract.deployed();
+
 
       console.log('Escrow contract generated successfully!');
     } catch (error) {
